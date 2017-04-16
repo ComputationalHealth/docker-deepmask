@@ -1,4 +1,5 @@
 FROM datasci/torch
+MAINTAINER Wade Schulz <wade.schulz@yale.edu>
 
 RUN luarocks install image && \
 	luarocks install tds && \
