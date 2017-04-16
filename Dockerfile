@@ -8,7 +8,9 @@ RUN apt-get update && apt-get install -y \
 
 ADD /sudoers /etc/sudoers
 
-RUN chmod 440 /etc/sudoers && useradd -ms /bin/bash datasci && usermod -aG sudo datasci
+RUN chmod 440 /etc/sudoers && \
+	useradd -ms /bin/bash datasci && \
+	usermod -aG sudo datasci
 
 USER datasci
 WORKDIR /home/datasci
@@ -25,7 +27,6 @@ ENV LUA_PATH='/home/datasci/.luarocks/share/lua/5.1/?.lua;/home/datasci/.luarock
 	DYLD_LIBRARY_PATH=/home/datasci/torch/install/lib:$DYLD_LIBRARY_PATH
 ENV LUA_CPATH='/home/datasci/torch/install/lib/?.so;'$LUA_CPATH
 
-WORKDIR /home/datasci
 RUN luarocks install image && \
 	luarocks install tds && \
 	luarocks install json && \
