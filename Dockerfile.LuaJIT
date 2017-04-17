@@ -1,4 +1,4 @@
-FROM datasci/torch
+FROM datasci/torch:luajit
 MAINTAINER Wade Schulz <wade.schulz@yale.edu>
 
 RUN luarocks install image && \
